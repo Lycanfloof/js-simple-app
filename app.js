@@ -227,6 +227,27 @@ let Bottombar = {
     after_render: async () => { }
 }
 
+let Edit = {
+    render: async () => {
+        let view =  /*html*/`
+        <section class="section">
+                <label> Post Id :</label>
+                <input type="text" value="${post.id}"/>
+                <label> Post Title :</label>
+                <input type="text" value="${post.title}"/>
+                <label> Post Content :</label>
+                <input type="text" value="${post.content}"/>
+                <label> Post Author :</label>
+                <input type="text" value="${post.name}"/>
+
+                <button>Update</button>
+        </section>
+        `
+        return view
+    },
+    after_render: async () => { }
+}
+
 const Utils = { 
     // --------------------------------
     //  Parse a url and break it into resource, id and verb
