@@ -202,6 +202,9 @@ let Navbar = {
                                     <a class="button is-light" href="#/login">
                                         Log in
                                     </a>
+                                    <a id="logoutbtn" class="button is-light">
+                                        Log out
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +214,16 @@ let Navbar = {
         `
         return view
     },
-    after_render: async () => { }
+    after_render: async () => {
+        document.getElementById("logoutbtn").addEventListener ("click",  () => {
+            if(loggedIn){
+                loggedIn = false;
+                alert(`You have logged out!`)
+            }else{
+                alert(`You have to login first!`)
+            }
+        })
+    }
 }
 let Bottombar = {
     render: async () => {
