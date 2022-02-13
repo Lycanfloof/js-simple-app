@@ -94,6 +94,8 @@ let PostShow = {
                 <p> Post Title : ${post.title} </p>
                 <p> Post Content : ${post.content} </p>
                 <p> Post Author : ${post.name} </p>
+                <br>
+                <a class="button is-primary" href="#/edit/${post.id}">Edit</a>
             </section>
         `
     }
@@ -249,14 +251,20 @@ let Edit = {
                 <label> Post Author :</label>
                 <input type="text" value="${post.name}"/>
             </div>
+            <br>
             <div class="edit">
-                <button>Update</button>
+                <a id="updatebtn" class="button is-primary" href="#/p/${post.id}">Update</a>
+                <a class="button is-primary" href="#/p/${post.id}">Cancel</a>
             </div>
         </section>
         `
         return view
     },
-    after_render: async () => { }
+    after_render: async () => {
+        document.getElementById("updatebtn").addEventListener ("click",  () => {
+            alert(`The article was updated!`)
+        })
+    }
 }
 
 let Login = {
