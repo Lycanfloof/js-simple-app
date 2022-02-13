@@ -229,6 +229,8 @@ let Bottombar = {
     after_render: async () => { }
 }
 
+let loggedIn = false;
+
 let Edit = {
     render: async () => {
         let request = Utils.parseRequestURL()
@@ -262,7 +264,11 @@ let Edit = {
     },
     after_render: async () => {
         document.getElementById("updatebtn").addEventListener ("click",  () => {
-            alert(`The article was updated!`)
+            if(loggedIn){
+                alert(`The article was updated!`)
+            }else{
+                alert(`You have to login first!`)
+            }
         })
     }
 }
@@ -312,6 +318,7 @@ let Login = {
             } 
             else {
                 alert(`You have logged in successfully!`)
+                loggedIn = true;
                 //let page = routes["/"] ? routes["/"] : Error404
                 //content.innerHTML = await page.render();
                 //await page.after_render();
