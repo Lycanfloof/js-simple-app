@@ -229,18 +229,29 @@ let Bottombar = {
 
 let Edit = {
     render: async () => {
+        let request = Utils.parseRequestURL()
+        let post = await getPost(request.id)
         let view =  /*html*/`
         <section class="section">
+            <div class="edit">
                 <label> Post Id :</label>
                 <input type="text" value="${post.id}"/>
+            </div>
+            <div class="edit">
                 <label> Post Title :</label>
                 <input type="text" value="${post.title}"/>
+            </div>
+            <div class="edit">
                 <label> Post Content :</label>
                 <input type="text" value="${post.content}"/>
+            </div>
+            <div class="edit">
                 <label> Post Author :</label>
                 <input type="text" value="${post.name}"/>
-
+            </div>
+            <div class="edit">
                 <button>Update</button>
+            </div>
         </section>
         `
         return view
@@ -282,6 +293,7 @@ const routes = {
     , '/about'      : About
     , '/p/:id'      : PostShow
     , '/register'   : Register
+    , '/edit/:id'   : Edit
 };
 
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
